@@ -1,44 +1,112 @@
 html {
-  height: 100%;
+    height : 100%;
 }
 
 body {
-  margin: 0;
-  height: 100%;
-  padding: 50px;
-  font: 14px "Arial, sans-serif;
+    margin  : 0;
+    height  : 100%;
+    padding : 50px;
+    font    : 14px "Arial, sans-serif;
+}
+
+hr {
+    margin-left     : -25px;
+    margin-right    : -25px;
+}
+
+.panel-heading {
+    cursor      : pointer;
+    text-align  : center;
+}
+
+.panel-title {
+    position : relative;
+}
+
+.panel-title > .show {
+    position    : absolute;
+    right       : 0;
+
+    font-size   : 13px;
+}
+
+.panel-body .form-group .glyphicon-question-sign {
+    color       : #01579B;
+    font-size   : 18px;
+    cursor      : pointer;
+}
+
+.form-control, .btn, .btn-large,
+.panel, .panel-default,
+.panel-heading, .panel-body {
+    border-radius : 0;
+}
+
+.fd-dgfip-apis > .panel {
+    margin-left     : -26px;
+    margin-right    : -26px;
+    margin-bottom   : -2px;
+}
+
+.fd-dgfip-apis > .panel > .panel-heading,
+.panel-body {
+    padding-left    : 25px;
+    padding-right   : 25px;
+}
+
+.sub-form {
+    padding-left : 50px;
 }
 
 .rounded {
-  padding: 8px 24px 24px 24px;
-  border: 1px solid #CCCCCC;
-  -webkit-border-radius: 12px;
-  -moz-border-radius: 12px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  position: relative;
+    padding                 : 8px 24px 24px 24px;
+    border                  : 1px solid #CCCCCC;
+    -webkit-border-radius   : 12px;
+    -moz-border-radius      : 12px;
+    border-radius           : 12px;
+    margin-bottom           : 20px;
+    position                : relative;
 }
 
 .rounded h2 {
-  font-size: 1.2em;
-  border-bottom: 5px solid #EBEBEB;
-  padding-bottom: 2px;
-  margin-bottom: 12px;
-  font-weight: bold;
+    font-size       : 1.2em;
+    border-bottom   : 5px solid #EBEBEB;
+    padding-bottom  : 2px;
+    margin-bottom   : 12px;
+    font-weight     : bold;
+}
+
+.panel-default > .panel-heading {
+    background-color    : #01579B;
+    color               : #FFFFFF;
+    font-weight         : bold;
+}
+
+img.logo-fc {
+    position    : absolute;
+    right       : 30px;
+    height      : 50px;
+}
+
+@media (max-width: 615px) {
+    img.logo-fc {
+        position        : inherit;
+        margin-bottom   : 10px;
+    }
 }
 
 @media only all and (min-width: 1000px) {
 
-  #conteneur {
-    padding: 42px 93px;
-  }
+    #conteneur {
+        padding : 42px 93px;
+    }
 
-  #page {
-    width: 972px;
-  }
+    #page {
+        width : 972px;
+    }
 
-  #header {
-    width: 100%;
-    height: 60px;
-  }
+    #header {
+        width   : 100%;
+        height  : 60px;
+    }
 }

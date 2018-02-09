@@ -19,3 +19,7 @@ target/
 .idea
 
 OpenID-Connect-MITREid-Java-Spring-Server/.idea
+
+package-lock.json
+npm-shrinkwrap.json
+

@@ -63,7 +63,7 @@ var options = {
 };
 var oidc = require('./openid-connect-provider.js').oidc(options);
 
-var DGFIP_FIELDS = ['dgfip_rfr', 'dgfip_nbpac', 'dgfip_sitfam', 'dgfip_nbpart', 'dgfip_aft'];
+var DGFIP_FIELDS = ['dgfip_rfr', 'dgfip_nbpac', 'dgfip_sitfam', 'dgfip_nbpart', 'dgfip_aft', 'dgfip_nbpacf', 'dgfip_nbpach', 'dgfip_nbpacr', 'dgfip_nbpacj', 'dgfip_nbpacp', 'dgfip_nbpacn'];
 var OPTIONAL_FIELDS = ['preferred_username', 'phone_number', 'address'];
 
 app.set('port', process.env.PORT || 3042);
@@ -125,107 +125,7 @@ app.get('/user/consent', function (req, res) {
 app.post('/user/consent', oidc.consent());
 
 app.get('/user/create', function (req, res) {
-    var head = '<head><script type="text/javascript" src="/js/jquery.min.js"></script><script type="text/javascript" src="/js/garlic.min.js"></script><link href="/stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css"><link href="/stylesheets/style.css" rel="stylesheet" type="text/css"><title>Création de jeu de données utilisateur en environnement d\'intégration</title><script src="https://www.google.com/recaptcha/api.js"></script></head>';
-    var inputs = '';
-    var inputs_dgfip = '';
-    var fields = {
-        identifier: {
-            label: 'Identifiant qui sera utilisé pour l\'authentification :',
-            type: 'text',
-            placeholder: 'exemple : 46413193479'
-        },
-        given_name: {
-            label: 'Prénoms :',
-            type: 'text',
-            placeholder: 'exemple : Jean-Pierre Eric'
-        },
-        family_name: {
-            label: 'Nom de famille :',
-            type: 'text',
-            placeholder: 'exemple : De Larue'
-        },
-        birthdate: {
-            label: 'Date de naissance YYYY-MM-DD :',
-            type: 'text',
-            placeholder: 'exemple : 1976-01-22'
-        },
-        gender: {
-            label: 'Sexe : ',
-            type: 'text',
-            placeholder: 'male ou female'
-        },
-        email: {
-            label: 'Adresse électronique :',
-            type: 'email',
-            placeholder: ''
-        },
-        preferred_username: {
-            label: 'Nom d\'usage (facultatif):',
-            type: 'text',
-            placeholder: 'exemple: Dupont'
-        },
-        address: {
-            label: 'Adresse postale (facultatif):',
-            type: 'text',
-            placeholder: 'exemple: 1 Place de la République'
-        },
-        phone_number: {
-            label: 'Numéro de téléphone (facultatif):',
-            type: 'number',
-            placeholder: 'exemple: 0101010101'
-        },
-        birthcountry: {
-            label: 'Code COG du pays de naissance :',
-            type: 'text',
-            placeholder: 'exemple : 99100 pour la France'
-        },
-        birthplace: {
-            label: 'Code COG du lieu de naissance - à renseigner si le COG pays est la France (99100)',
-            type: 'text',
-            placeholder: 'exemple : 31555 pour Toulouse'
-        },
-        password: {
-            label: 'Mot de passe :',
-            type: 'password',
-            placeholder: ''
-        },
-        dgfip_rfr: {
-            label: 'Revenu fiscal de référence',
-            type: 'number',
-            placeholder: ''
-        },
-        dgfip_nbpac: {
-            label: 'Nombre de personnes à charge',
-            type: 'number',
-            placeholder: ''
-        },
-        dgfip_sitfam: {
-            label: 'Situation familiale',
-            type: 'text',
-            placeholder: 'valeurs possibles : M, C, D, O, V'
-        },
-        dgfip_nbpart: {
-            label: 'Nombre de parts',
-            type: 'number',
-            placeholder: ''
-        },
-        dgfip_aft: {
-            label: 'Adresse fiscale de taxation',
-            type: 'text',
-            placeholder: 'n° de voie + libellé de la voie + complément d\'adresse + libellé de la commune + code postal + nom de la localité de destination'
-}
-    };
-    for (var i in fields) {
-        if(i.indexOf('dgfip')===-1){
-            inputs += '<div class="form-group"><label for="' + i + '">' + fields[i].label + '</label><input class="form-control" type="' + fields[i].type + ' "placeholder="' + fields[i].placeholder + '" id="' + i + '"  name="' + i + '"';
-            inputs += (i!== 'birthplace' && i!== 'preferred_username' && i!== 'phone_number' && i!== 'address')? 'required="true"/></div>' : '/></div>';
-        } else {
-            inputs_dgfip += '<div class="form-group"><label for="' + i + '">' + fields[i].label + '</label><input class="form-control" type="' + fields[i].type + '"placeholder="' + fields[i].placeholder + '" id="' + i + '"  name="' + i + '"/></div>';
-        }
-    }
-    var error = req.session.error ? '<div class="alert alert-warning">' + req.session.error + '</div>' : '';
-    var body = '<body><div class="row"><div class="col-md-6 col-md-offset-3"><div class="panel panel-default"><div class="panel-heading" style="padding-top: 15px; padding-bottom: 15px;"><h1 class="panel-title text-center" style="line-height: 1.5;">Création de jeu de données utilisateur <br/>en environnement d\'intégration</h1></div><div class="panel-body" style="padding: 25px;">' + error + '<div class="alert alert-warning text-center" style="margin-bottom: 25px;"><strong>Tous les champs sont obligatoires (sauf précisé).</strong> Les comptes seront disponibles dans les 2 bouchons de fournisseurs d\'identités Impots.gouv et Ameli.</div><form data-persist="garlic" data-destroy="false" method="POST">' + inputs + '<hr/> <p>Si vous souhaitez appeler le FD bouchon DGFIP, vous pouvez aussi remplir les informations suivantes :</p>' + inputs_dgfip + '<div class="g-recaptcha" data-sitekey="6LfxVxwTAAAAAJ0F1mUqmpMMsB6N1nlR41OCIJ-C"></div><input class="btn btn-primary btn-lg btn-block" style="margin-top: 20px;" type="submit"/></form>' + error + '</div></div></div></div></body>';
-    res.send('<html>' + head + body + '</html>');
+    res.render('impots/user/create');
 });
 
 app.post('/user/create', oidc.use({policies: {loggedIn: false}, models: 'user'}), function (req, res) {

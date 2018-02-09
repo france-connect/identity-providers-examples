@@ -1,0 +1,226 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+    <title>Création de jeu de données utilisateur en environnement d'intégration</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="padding-top: 15px; padding-bottom: 15px;">
+                <img class="logo-fc" src="/images/fc_logo_alt2_v2.png">
+                <h1 class="panel-title text-center" style="line-height: 1.5;">Création de jeu de données utilisateur <br/>en environnement d'intégration</h1>
+            </div>
+            <div class="panel-body" style="padding: 25px;">
+                <div class="alert alert-warning text-center" style="margin-bottom: 25px;"><strong>Tous les champs sont obligatoires (sauf précisé).</strong> Les comptes seront disponibles dans les 2 bouchons de fournisseurs d'identités Impots.gouv et Ameli.</div>
+                <form data-persist="garlic" data-destroy="false" method="POST">
+                    <div class="form-group">
+                        <label for="identifier">Identifiant qui sera utilisé pour l'authentification :</label>
+                        <input class="form-control" type="text" placeholder="exemple : 46413193479" id="identifier" name="identifier" required="true" />
+                    </div>
+                    <div class="form-group">
+                        <label for="given_name">Prénoms :</label>
+                        <input class="form-control" type="text" placeholder="exemple : Jean-Pierre Eric" id="given_name" name="given_name" required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="family_name">Nom de famille :</label>
+                        <input class="form-control" type="text" placeholder="exemple : De Larue" id="family_name" name="family_name" required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthdate">Date de naissance YYYY-MM-DD :</label>
+                        <input class="form-control" type="text" placeholder="exemple : 1976-01-22" id="birthdate" name="birthdate" required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Sexe : </label>
+                        <select class="form-control" id="dgfip_sitfam" name="gender" required="true">
+                            <option value="male" selected>Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Adresse électronique :</label>
+                        <input class="form-control" type="email" placeholder="" id="email" name="email" required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="preferred_username">Nom d'usage (facultatif):</label>
+                        <input class="form-control" type="text" placeholder="exemple: Dupont" id="preferred_username" name="preferred_username"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Adresse postale (facultatif):</label>
+                        <input class="form-control" type="text" placeholder="exemple: 1 Place de la République" id="address" name="address"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone_number">Numéro de téléphone (facultatif):</label>
+                        <input class="form-control" type="number" placeholder="exemple: 0101010101" id="phone_number" name="phone_number"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthcountry">Code COG du pays de naissance :</label>
+                        <input class="form-control" type="text" placeholder="exemple : 99100 pour la France" id="birthcountry" name="birthcountry" required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthplace">Code COG du lieu de naissance - à renseigner si le COG pays est la France (99100)</label>
+                        <input class="form-control" type="text" placeholder="exemple : 31555 pour Toulouse" id="birthplace" name="birthplace"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe :</label>
+                        <input class="form-control" type="password" placeholder="" id="password" name="password" required="true"/>
+                    </div>
+
+                    <hr />
+
+                    <h4>Si vous souhaitez utiliser le bouchon DGFIP en tant que fournisseur de données, vous pouvez remplir les informations suivantes :</h4>
+                    <br />
+
+                    <div class="fd-dgfip-apis">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOS1" data-toggle="collapse" href="#collapseOS1" aria-expanded="false" aria-controls="collapseOS1">
+                                <h4 class="panel-title">
+                                    <a role="button">
+                                        Revenu Fiscal de Référence (RFR) et nombre de parts
+                                    </a>
+                                    <a class="glyphicon show" role="button">Afficher</a>
+                                </h4>
+                            </div>
+                            <div id="collapseOS1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOS1">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label for="dgfip_nbpart">
+                                            Nombre de parts
+                                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Nombre entier de 10 caractères numériques"></span>
+                                        </label>
+                                        <input class="form-control" type="number" placeholder="" id="dgfip_nbpart" name="dgfip_nbpart" min="1000000000" max="9999999999" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dgfip_rfr">
+                                            Revenu fiscal de référence
+                                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Nombre décimal compris entre 0 et 99.99" title="10 caractères obligatoires"></span>
+                                        </label>
+                                        <input class="form-control" type="number" min="0" max="99.99" step="0.01" placeholder="" id="dgfip_rfr" name="dgfip_rfr"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOS2" data-toggle="collapse" href="#collapseOS2" aria-expanded="true" aria-controls="collapseOS2">
+                                <h4 class="panel-title">
+                                    <a role="button" >
+                                        Adresse fiscale de taxation à l’IR
+                                    </a>
+                                    <a class="glyphicon show" role="button">Afficher</a>
+                                </h4>
+                            </div>
+                            <div id="collapseOS2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOS2">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label for="dgfip_aft">
+                                            Adresse fiscale de taxation
+                                        </label>
+                                        <input class="form-control" type="text" placeholder="n° de voie + libellé de la voie + complément d'adresse + libellé de la commune + code postal + nom de la localité de destination" id="dgfip_aft"  name="dgfip_aft"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOS4" data-toggle="collapse" href="#collapseOS4" aria-expanded="true" aria-controls="collapseOS4">
+                                <h4 class="panel-title">
+                                    <a role="button">
+                                        Situation et composition du foyer fiscal
+                                    </a>
+                                    <a class="glyphicon show" role="button">Afficher</a>
+                                </h4>
+                            </div>
+                            <div id="collapseOS4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOS4">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label for="dgfip_sitfam">
+                                            Situation familiale
+                                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Correspond à la situation du (des) déclarant(s) du foyer fiscal : M : Marié(e) / C : Célibataire / D : Divorcé(e) / V : Veuf(ve) / O : Pacsé(e)"></span>
+                                        </label>
+                                        <select class="form-control" id="dgfip_sitfam"  name="dgfip_sitfam">
+                                            <option value="M" selected>Marié(e)</option>
+                                            <option value="C">Célibataire</option>
+                                            <option value="D">Divorcé(e)</option>
+                                            <option value="V">Veuf(ve)</option>
+                                            <option value="O">Pacsé(e)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dgfip_nbpac">
+                                            Nombre de personnes à charge
+                                            <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Le nombre de personnes à charge correspond à la somme : enfants à charge + enfants à charge en garde alternée + personnes invalides à charge + enfants majeurs célibataires + enfants majeurs mariés ou chargés de famille + petits enfants en garde alternée"></span>
+                                        </label>
+                                        <input class="form-control" type="number" placeholder="" id="dgfip_nbpac" name="dgfip_nbpac"/>
+                                    </div>
+
+                                    <!-- HERE WE NEED TO ADD COMPATIBILITY ON SERVER -->
+                                    <div class="sub-form">
+                                        <div class="form-group">
+                                            <label for="dgfip_nbpac">Enfant(s) mineur(s) en garde exclusive</label>
+                                            <input class="form-control" type="number" placeholder="" id="dgfip_nbpacf"  name="dgfip_nbpacf"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dgfip_nbpac">Enfant(s) mineur(s) en résidence alternée</label>
+                                            <input class="form-control" type="number" placeholder="" id="dgfip_nbpach"  name="dgfip_nbpach"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dgfip_nbpac">Personne(s) à charge invalide</label>
+                                            <input class="form-control" type="number" placeholder="" id="dgfip_nbpacr"  name="dgfip_nbpacr"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dgfip_nbpac">Enfant(s) majeur(s) à charge célibataire</label>
+                                            <input class="form-control" type="number" placeholder="" id="dgfip_nbpacj"  name="dgfip_nbpacj"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dgfip_nbpac">Petit(s)-enfant(s) en résidence alternée</label>
+                                            <input class="form-control" type="number" placeholder="" id="dgfip_nbpacp"  name="dgfip_nbpacp"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dgfip_nbpac">Enfant(s) majeur(s) marié(s)/pacs »(s) avec ou
+                                                sans charge de famille</label>
+                                            <input class="form-control" type="number" placeholder="" id="dgfip_nbpacn"  name="dgfip_nbpacn"/>
+                                        </div>
+                                    </div>
+                                    <!-- !HERE WE NEED TO ADD COMPATIBILITY ON SERVER -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOS7" data-toggle="collapse" href="#collapseOS7" aria-expanded="false" aria-controls="collapseOS7">
+                                <h4 class="panel-title">
+                                    <a role="button">
+                                        Données taxe d'habitation (TH)
+                                    </a>
+                                    <a class="glyphicon show" role="button">Afficher</a>
+                                </h4>
+                            </div>
+                            <div id="collapseOS7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOS7">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <br /><br /><br />
+
+                    <div class="g-recaptcha" data-sitekey="6LfxVxwTAAAAAJ0F1mUqmpMMsB6N1nlR41OCIJ-C"></div>
+                    <input class="btn btn-primary btn-lg btn-block" style="margin-top: 20px;" type="submit"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/garlic.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>
+
+</body>
+</html>
