@@ -4,54 +4,48 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= title %></title>
-  <link rel='stylesheet' href='/stylesheets/bulma.min.css' />
   <link rel='stylesheet' href='/stylesheets/main.css' />
 </head>
 <body>
-  <section class="hero is-fullheight">
-    <div class="container has-text-centered">
-      <div class="column is-half is-offset-3">
-          <h1 class="title has-text-grey">
-            Bienvenue sur le FI de démonstration<br>
-            FranceConnect Agents
-          </h1>
-        <div class="box">
-          <form autocomplete="off" action="/interaction/<%= details.uuid %>/login" method="post">
-            <input type="hidden" name="uuid" value="<%= details.uuid %>"/>
-            <div class="field">
-              <div class="control">
-                <% if (error.message !== '') {%> <label for="login" class="has-text-danger"> Identifiant incrorrect </label> <% } %>
-                <input 
-                  id="login"
-                  type="text"
-                  name="login"
-                  class="input is-large <%= (error.message !== '') ? 'help is-danger' : '' %>" 
-                  placeholder="Veuillez renseigner votre identifiant"
-                  <% if (!details.params.login_hint) { %> autofocus="on" <% } else { %> value="<%= details.params.login_hint %>" <% } %>
-                  required
-                >
-              </div>
-            </div>
-            <div class="field">
-              <div class="control">
-                  <% if (error.message !== '') {%> <label for="password" class="has-text-danger"> Mot de passe incrorrect </label><% } %>
-                <input
-                  id="password"
-                  type="password"
-                  name="password"
-                  class="input is-large <%= (error.message !== '') ? 'help is-danger' : '' %>"
-                  placeholder="Veuillez renseigner votre mot de passe"
-                  <% if (details.params.login_hint) { %> autofocus="on" <% } %>
-                  required
-                >
-              </div>
-            </div>
-            <button class="button is-block is-large is-fullwidth">Valider</button>
-          </form>
-        </div>
+  <section>
+    <div class="container text-centered">
+      <header>
+        <img src="../images/AGENT_HD.svg" width="20%" alt="">
+      </header>
+      <div class="box">
+        <h1 class="title has-text-grey">
+          Bienvenue sur le FI de démonstration<br>
+          FranceConnect Agent
+        </h1>
+        <form autocomplete="off" action="/interaction/<%= details.uuid %>/login" method="post">
+          <input type="hidden" name="uuid" value="<%= details.uuid %>"/>
+          <% if (error.message !== '') {%> <label for="login" class="text-error"> Identifiant incrorrect </label> <% } %>
+
+          <input 
+            id="login"
+            type="text"
+            name="login"
+            class="is-full <%= (error.message !== '') ? 'error' : '' %>" 
+            placeholder="Veuillez renseigner votre identifiant"
+            <% if (!details.params.login_hint) { %> autofocus="on" <% } else { %> value="<%= details.params.login_hint %>" <% } %>
+            required
+          >
+
+          <% if (error.message !== '') {%> <label for="password" class="text-error"> Mot de passe incrorrect </label><% } %>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            class="is-full <%= (error.message !== '') ? 'error' : '' %>"
+            placeholder="Veuillez renseigner votre mot de passe"
+            <% if (details.params.login_hint) { %> autofocus="on" <% } %>
+            required
+          >
+          <button class="is-full">Valider</button>
+        </form>
       </div>
     </div>
-    <div class="content has-text-right bottom">FranceConnect Agents - Application de démonstration</div>
+    <div class="content text-right bottom">FranceConnect Agents - Application de démonstration</div>
   </section>
   <script async src="/js/main.js"></script>
 </body>
