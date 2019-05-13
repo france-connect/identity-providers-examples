@@ -9,3 +9,18 @@ anne-laure,123,Pilloy,anneLaure,TAYO,MME,female,Anne-Laure@finances.gouv.fr,0123
 cdore-adc,cdore,Dore,Claude,,,,claude.dore@finances.gouv.fr,,,,,,,,,,,110020013,11002001300097,SG,Agent,,RIME,2019-02-25T00:00:00.000Z,2019-02-25T00:00:00.000Z
 bsiskind-adc,bsiskind,Bruno,SISKIND,,,,Bruno.SISKIND@finances.gouv.fr,,,,,,,,,,,110020013,11002001300097,SG,Agent,,RIME,2019-02-25T00:00:00.000Z,2019-02-25T00:00:00.000Z
 nmouleyre-adc,nmouleyre,Nadine,MOULEYRE,,,,Nadine.MOULEYRE@finances.gouv.fr,,,,,,,,,,,110020013,11002001300097,SG,Agent,,RIME,2019-02-25T00:00:00.000Z,2019-02-25T00:00:00.000Z
+214569,recettepju,AUTEURA,Henri,,,male,ex.laura.siewe@justice.gouv.fr,0623600543,1995-05-02,1995,05,02,,,31555,99100,,,,,,,,,
+128654,recettepju,VICTIMOS,Odile,,,female,ex.laura.siewe@justice.gouv.fr,0623600543,1992-06-12,1992,06,12,,,31555,99100,,,,,,,,,
+2015487,recettepju,REQUETA,Jean-Pierre,,,male,ex.laura.siewe@justice.gouv.fr,0623600543,1975-05-20,1975,05,20,,,31555,99100,,,,,,,,,
+14578210,recettepju,REQUETE-BAI,Léa,,,female,ex.laura.siewe@justice.gouv.fr,0623600543,1975-05-20,1975,05,20,,,31555,99100,,,,,,,,,
+12,recettepju,REQUETE-CET,Ivan,,,male,Claire.leroy@justice.gouv.fr,0623600543,1999-05-13,1999,05,13,,,31555,99100,,,,,,,,,
+13,recettepju,AUTEURBAI,Alain,,,male,Claire.leroy@justice.gouv.fr,0623600543,1969-07-08,1969,07,08,,,31555,99100,,,,,,,,,
+14,recettepju,REPRESENTANT-LEGALA,Charlotte,,,female,Claire.leroy@justice.gouv.fr,0623600543,1970-05-12,1970,05,12,,,31555,99100,,,,,,,,,
+15,recettepju,MINORA,Georges,,,male,Claire.leroy@justice.gouv.fr,0623600543,1971-05-10,1971,05,10,,,31555,99100,,,,,,,,,
+16,recettepju,LEGALI,Jeanne,,,female,Claire.leroy@justice.gouv.fr,0623600543,1970-05-12,1970,05,12,,,31555,99100,,,,,,,,,
+17,recettepju,MINORA (mineur),Marc,,,male,Guillaume.auve@talan.com,,2003-05-20,2003,05,20,,,31555,99100,,,,,,,,,
+18,recettepju,MINORBAI (mineur),Boris,,,male,Claire.leroy@justice.gouv.fr,,2002-01-01,2002,01,01,,,31555,99100,,,,,,,,,
+258706,recettepju,UNE-DE-PLUS,Anne-Marie,,,female,laura.siewe@externes.justice.gouv.fr,0612345689,1983-04-14,1983,04,14,,,,99100,,,,,,,,,
+20,recettepju,PPAUTEUR-A,Paul,,,male,Claire.leroy@justice.gouv.fr,,1970-11-27,1970,11,27,,,31555,99100,,,,,,,,,
+21,recettepju,PPAUTEUR-B,Prénom-Etr-B,,,male,Claire.leroy@justice.gouv.fr,0623600545,1970-11-20,1970,11,20,,,31555,99100,,,,,,,,,
+22,recettepju,AuteurB,Laurent,,,male,,,1970-11-20,1970,11,20,,,31555,99100,,,,,,,,,
