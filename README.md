@@ -1,15 +1,6 @@
 identity-providers-examples
 ===========================
 
-## :warning: Deprecation warning :warning: this repository has been moved to https://github.com/france-connect/identity-provider-example
+## :warning: Do not removed this repository
 
-Ce dépôt Github propose des exemples de fournisseurs d'identité compatibles avec France Connect.
-
-Il est maintenu par l'équipe des développeurs de France Connect. Contactez-nous à l'adresse franceconnect.projet@octo.com.
-La documentation de France Connect est quant à elle disponible ici : http://doc.integ01.dev-franceconnect.fr/.
-
-Liste des fournisseurs d'identité proposés :
-* __OpenID-Connect-MITREid-Java-Spring-Server__ : fournisseur d'idendité Java/Spring utilisant la librairie MITREid Connect et basé sur l'exemple fourni à l'adresse https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server par MITREid
-Pour l'utiliser, mettez à jour le paramètre "issuerURL dans le fichier "OpenID-Connect-Java-Spring-Server ▸ openid-connect-server-webapp ▸ src ▸ main ▸ webapp ▸ WEB-INF" et générez le WAR du module openid-connect-server-webapp
-
-* __OpenID-Connect-NodeJS__ : fournisseur d'identité NodeJS utilisant le module openid-connect. Pour l'utiliser, se référer à la documentation située [ici](https://github.com/france-connect/identity-providers-examples/tree/master/OpenID-Connect-NodeJS)
+Ce dépôt Github est encore utilisé par Agent Connect, ne surtout par supprimer.
