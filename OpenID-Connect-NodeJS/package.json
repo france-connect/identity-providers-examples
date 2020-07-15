@@ -18,7 +18,7 @@
     "express-session": "1.15.1",
     "extend": "3.0.0",
     "jwt-simple": "0.5.1",
-    "lodash": "4.17.5",
+    "lodash": "4.17.19",
     "method-override": "2.3.10",
     "modelling": "0.0.3",
     "mongoose": "4.9.0",
